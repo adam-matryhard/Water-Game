@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Town: Tactical Water Access Strategy Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Game menu controls -->
+    <div class="game-menu" id="game-menu">
+        <button id="start-btn">Start Game</button>
+        <button id="pause-btn" disabled>Pause</button>
+        <button id="restart-btn-menu">Restart</button>
+    </div>
+    <!-- Timing box now below menu and above main layout -->
+    <div id="time-box" style="margin:0 auto 18px auto;padding:8px 16px;background:#e0f2f1;border-radius:8px;min-width:120px;text-align:center;font-size:1.08em;color:#00695c;display:block;max-width:220px;">
+        <span id="game-date">Day 15, Month 1, Year 2025</span>
+    </div>
+    <!-- Main responsive layout container -->
+    <div class="main-layout vertical-layout">
+        <!-- Stat panel section (now above the map) -->
+        <div class="stat-panel">
+            <h1>Water Town: Tactical Water Access Strategy</h1>
+            <div id="month-row"><b>Month:</b> <span id="month">0</span></div>
+            <div class="progress-section">
+                <label for="water-progress">Total Water Users</label>
+                <div class="progress-bar-bg">
+                    <div id="water-progress-bar" class="progress-bar" style="width: 10%"></div>
+                </div>
+                <span id="water-percentage">10%</span>
+                <div id="water-users-label" style="font-size:0.98em;color:#00695c;margin-top:2px;"></div>
+            </div>
+            <div class="budget-section">
+                Budget: $<span id="budget">10000</span>
+            </div>
+            <div id="income-row"><b>Monthly Income:</b> $<span id="income">0</span></div>
+            <div id="maintenance-row"><b>Maintenance:</b> $<span id="maintenance">0</span></div>
+        </div>
+        <!-- Game map section (now takes up most of the screen) -->
+        <div class="map-section">
+            <div class="map-container large-map">
+                <img src="map.png" alt="Water Town Map" class="game-map" id="game-map">
+                <div class="zones-overlay">
+                    <!-- 9 clickable zones, positioned in a 3x3 grid using CSS grid -->
+                    <div class="zone-btn" data-zone="1" aria-label="Zone 1"></div>
+                    <div class="zone-btn" data-zone="2" aria-label="Zone 2"></div>
+                    <div class="zone-btn" data-zone="3" aria-label="Zone 3"></div>
+                    <div class="zone-btn" data-zone="4" aria-label="Zone 4"></div>
+                    <div class="zone-btn" data-zone="5" aria-label="Zone 5"></div>
+                    <div class="zone-btn" data-zone="6" aria-label="Zone 6"></div>
+                    <div class="zone-btn" data-zone="7" aria-label="Zone 7"></div>
+                    <div class="zone-btn" data-zone="8" aria-label="Zone 8"></div>
+                    <div class="zone-btn" data-zone="9" aria-label="Zone 9"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Region info popups for each zone (hidden by default, shown by JS) -->
+    <div id="region-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal" aria-label="Close">&times;</button>
+            <h2 id="region-title">Region 1</h2>
+            <div class="region-info">
+                <div><b>Type:</b> <span id="region-type">Urban</span></div>
+                <div><b>Population:</b> <span id="region-pop">0</span></div>
+                <div><b>Base Water Need:</b> <span id="region-need">0</span></div>
+                <div><b>Water Access:</b> <span id="region-access">0%</span></div>
+                <div><b>Delivered:</b> <span id="region-delivered">0</span></div>
+            </div>
+            <div class="region-actions">
+                <!-- Upgrade/build buttons will be injected here by JS -->
+            </div>
+        </div>
+    </div>
+    <!-- Win screen (hidden by default) -->
+    <div id="win-screen" class="win-screen hidden">
+        <div class="win-content">
+            <h2>Congratulations!</h2>
+            <p>You achieved 100% water accessibility for all regions!</p>
+            <div id="performance-summary"></div>
+            <canvas id="confetti-canvas"></canvas>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- adam -->
+</body>
+</html>
